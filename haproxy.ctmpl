@@ -7,9 +7,9 @@ defaults
 {{$state := (key "service/webapp/state")}}
 
 listen http-in
-    bind *:{{if eq $state "green"}}8080{{else}}80{{end}}{{range service "blue.tinyweb"}}
+    bind *:{{if eq $state "green"}}8080{{else}}80{{end}}{{range service "blue.webapp"}}
     server {{.ID}} {{.Address}}:{{.Port}}{{end}}
 
 listen http-in
-    bind *:{{if eq $state "green"}}80{{else}}8080{{end}}{{range service "green.tinyweb"}}
+    bind *:{{if eq $state "green"}}80{{else}}8080{{end}}{{range service "green.webapp"}}
     server {{.ID}} {{.Address}}:{{.Port}}{{end}}
